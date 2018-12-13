@@ -1,0 +1,26 @@
+[GENERATED OBJECT FILE]
+b__hello2.o
+[PROJECT FILES]
+E:\AGH\Projekty\Bramki\bramki.gpr
+20181211224242
+E:\GNAT\2018\lib\gnat\gtkada.gpr
+20181211185636
+[BOUND OBJECT FILES]
+E:\AGH\Projekty\Bramki\obj\hello2_package.o
+E:\AGH\Projekty\Bramki\obj\hello2.o
+[GENERATED SOURCE FILES]
+b__hello2.ads
+b__hello2.adb
+b__hello2.ali
+[RESULTING OPTIONS]
+-LE:\AGH\Projekty\Bramki\obj\
+-LE:\AGH\Projekty\Bramki\obj\
+-LE:\GNAT\2018\lib\gtkada\gtkada.static\gtkada\
+-LE:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
+-static
+-static-libgcc
+-shared-libgcc
+-shared-libgcc
+-shared-libgcc
+E:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
+-Wl,--stack=0x2000000
