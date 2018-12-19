@@ -3,64 +3,344 @@
   <Project>
     <vfs_file>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_file>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_project />
       <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+    <file_marker column=" 28" line=" 3" >
+      <vfs_project />
       <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project />
-      <vfs_file>E:\AGH\Projekty\GtkAda-examples\tutorial\simple\simple.adb</vfs_file>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 47" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\nt_console.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 47" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\nt_console.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 7" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 7" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 2" line=" 142" >
+      <vfs_project />
       <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\nt_console.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 177" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\nt_console.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 199" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 138" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 138" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 46" line=" 11" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 8" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 45" line=" 11" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 8" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 63" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 106" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 97" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 117" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 109" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 123" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 120" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 129" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 126" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 130" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 203" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 11" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 14" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 85" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project />
       <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\old\main.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 10" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 6" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project />
       <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\hello2.adb</vfs_file>
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\old\terminaldrawhandler.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 9" line=" 65" >
-      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\hello2.adb</vfs_file>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\old\terminaldrawhandler.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 85" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 11" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 85" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 11" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 177" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\nt_console.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\old\terminaldrawhandler.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 177" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\src\nt_console.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>E:\AGH\Projekty\Bramki\old\main.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\hello2_package.adb</vfs_file>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\helper.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 11" line=" 15" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\helper.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\hello2_package.ads</vfs_file>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\helper.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 9" line=" 65" >
+    <file_marker column=" 55" line=" 7" >
       <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\hello2.adb</vfs_file>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\helper.ads</vfs_file>
     </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 1" >
       <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
-      <vfs_file>E:\AGH\Projekty\Bramki\src\hello2_package.ads</vfs_file>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\helper.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 11" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 203" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 11" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 203" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\demo.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 11" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 143" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 139" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 143" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 17" line=" 138" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 85" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 32" line=" 89" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 97" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 97" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 91" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 11" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 12" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 91" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 37" line=" 11" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 26" line=" 9" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 24" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 59" line=" 90" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 15" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\helper.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 38" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 32" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 38" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 32" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 47" line=" 44" >
+      <vfs_project>E:\AGH\Projekty\Bramki\bramki.gpr</vfs_project>
+      <vfs_file>E:\AGH\Projekty\Bramki\src\main.adb</vfs_file>
     </file_marker>
   </Project>
 </Locations>
