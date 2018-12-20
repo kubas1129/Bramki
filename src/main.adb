@@ -8,53 +8,72 @@ procedure Main is
 
    -- GLOBAL VARIABLES --
 
-   ScreenInfo : FScreenInfo:= (X => 3,Y=> 3);
+   SimulationScreenInfo : FScreenInfo:= (X => 30,Y=> 9,PaddingLeft=>0,PaddingTop=>0);
+
 
    ScreenRefreshInterval : Duration := 1.0;
 
 
-   -- FUNCTIONS,PROCEDURES --
-
-
-   procedure RefreshScreen(S: in TScreenData) is
-   begin
-      for X in 0..ScreenInfo.X loop
-         for Y in 0..ScreenInfo.Y loop
-            Goto_XY(X,Y);
-            Put(S(X,Y));
-         end loop;
-      end loop;
-   end RefreshScreen;
-
-
    -- PROTECTED
 
-   protected ScreenDataProtect is
-      procedure SetValue(Index: in MatrixIndex; Value : in Character);
-      procedure Remove(Index: in MatrixIndex);
-      function GetScreenData return TScreenData;
+   protected SimulationDataProtect is
+      procedure AddCar(Index: in FMatrixIndex; Value : in Character);
+      procedure RemoveCar(Index: in FMatrixIndex);
+      procedure InitNodesData;
+      function GetCarsData return TCarData.Vector;
+      function GetNodesData return TNodeData.Vector;
    private
-      ScreenData : TScreenData(0..ScreenInfo.X,0..ScreenInfo.Y) := (others => (others => 'X'));
-   end ScreenDataProtect;
+      --ScreenData : TScreenData(0..SimulationScreenInfo.X,0..SimulationScreenInfo.Y) := (others => (others => 'X'));
+      CarsData : TCarData.Vector;
+      NodesData : TNodeData.Vector;
+   end SimulationDataProtect;
 
 
-   protected body ScreenDataProtect is
-      procedure SetValue(Index: in MatrixIndex; Value : in Character) is
+   protected body SimulationDataProtect is
+      procedure AddCar(Index: in FMatrixIndex; Value : in Character) is
+         ToAdd : PFCar := new FCar'(X        => Index.X,
+                                   Y        => Index.Y,
+                                   CarColor => White,
+                                   Sign     => Value);
       begin
-         ScreenData(Index.X,Index.Y) := Value;
-      end SetValue;
+         CarsData.Append(New_Item => ToAdd);
+      end AddCar;
 
-      procedure Remove(Index: in MatrixIndex) is
+      procedure RemoveCar(Index: in FMatrixIndex) is
       begin
          null;
-      end Remove;
+      end RemoveCar;
 
-      function GetScreenData return TScreenData is
+      procedure InitNodesData is
       begin
-         return ScreenData;
-      end GetScreenData;
+         null;
+      end InitNodesData;
 
-   end ScreenDataProtect;
+      function GetCarsData return TCarData.Vector is
+      begin
+         return CarsData;
+      end GetCarsData;
+
+      function GetNodesData return TNodeData.Vector is
+      begin
+         return NodesData;
+      end GetNodesData;
+
+   end SimulationDataProtect;
+
+
+    -- FUNCTIONS,PROCEDURES --
+
+
+   procedure RefreshScreen is
+      Tmp : TCarData.Vector := SimulationDataProtect.GetCarsData;
+   begin
+      for I of Tmp loop
+         Goto_XY(I.X,I.Y);
+         Set_Foreground(I.CarColor);
+         Put(I.Sign);
+      end loop;
+   end RefreshScreen;
 
 
    -- TASKS DECLARATIONS --
@@ -87,7 +106,7 @@ procedure Main is
       accept Start  do
          loop
             Clear_Screen(Blue);
-            RefreshScreen(ScreenDataProtect.GetScreenData);
+            RefreshScreen;
             delay ScreenRefreshInterval;
          end loop;
       end Start;
@@ -111,8 +130,7 @@ procedure Main is
       accept Start;
       loop
          delay ScreenRefreshInterval;
-         ScreenDataProtect.SetValue(Index => (1,1),
-                                 Value => 'O');
+
       end loop;
    end Simulation;
 
@@ -133,11 +151,15 @@ procedure Main is
 
 begin
 
-   Simulation.Start;
+   --Simulation.Start;
 
-   Screen.Start;
+   --Screen.Start;
 
-   Keyboard.Start;
+   --Keyboard.Start;
+
+   SimulationDataProtect.AddCar(Index => (X=>0,Y=>0),Value => 'X');
+
+   Put_Line(SimulationDataProtect.GetCarsData.Length'Img & " i " & SimulationDataProtect.GetCarsData.Element(0).Sign);
 
 
 end Main;
