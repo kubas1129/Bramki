@@ -1,6 +1,6 @@
-with NT_Console,Ada.Unchecked_Deallocation,Ada.Containers.Vectors;
+with NT_Console,Ada.Unchecked_Deallocation,Ada.Containers.Vectors,Ada.Strings.Unbounded;
 
-use NT_Console, Ada.Containers;
+use NT_Console, Ada.Containers,Ada.Strings.Unbounded;
 
 
 package Helper is
@@ -33,13 +33,11 @@ package Helper is
    type FNode is record
       X,Y : Natural := 0;
       NodeColor : Color_Type := White;
+      Data : Unbounded_String;
    end record;
    
    -- Pointer to Node
    type PFNode is access FNode;
-   
-   -- propably to delete
-   type TScreenData is array (Natural range<>,Natural range<>) of Character;
    
    --Cars array
    package TCarData is new Vectors (Index_Type   => Natural,
@@ -51,7 +49,7 @@ package Helper is
                                      Element_Type => PFNode);
    use TNodeData;     
    
-   
+  
    -----Methods------ 
    
    -- Rand integer from range A-B

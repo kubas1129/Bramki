@@ -27,8 +27,8 @@ D ada.ads		20180524051736 76789da1 ada%s
 D a-except.ads		20180524051736 291912d5 ada.exceptions%s
 D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051736 5ab55268 interfaces%s
-D nt_console.ads	19990608095022 548ec638 nt_console%s
-D nt_console.adb	19990608095440 c0c511d5 nt_console%b
+D nt_console.ads	20181221182144 548ec638 nt_console%s
+D nt_console.adb	20181221182144 c0c511d5 nt_console%b
 D system.ads		20180524051738 32a08138 system%s
 D s-exctab.ads		20180524051738 54135002 system.exception_table%s
 D s-parame.ads		20180524051738 48ec542b system.parameters%s

@@ -1,6 +1,6 @@
-with Ada.Text_IO, NT_Console, Helper;
+with Ada.Text_IO, NT_Console, Helper,Ada.Strings.Unbounded;
 
-use Ada.Text_IO, NT_Console,Helper;
+use Ada.Text_IO, NT_Console,Helper,Ada.Strings.Unbounded;
 
 
 procedure Main is
@@ -18,36 +18,68 @@ procedure Main is
 
    protected SimulationDataProtect is
       procedure AddCar(Index: in FMatrixIndex; Value : in Character);
-      procedure RemoveCar(Index: in FMatrixIndex);
+      procedure RemoveCar(CarPointer: in PFCar);
       procedure InitNodesData;
+
+      function CheckIfCarExisted(Index : in FMatrixIndex) return Boolean;
+
+      -- GETTERS&SETTERS
       function GetCarsData return TCarData.Vector;
       function GetNodesData return TNodeData.Vector;
+      function GetLastAddCar return PFCar;
+      function GetLastAddNode return PFNode;
    private
-      --ScreenData : TScreenData(0..SimulationScreenInfo.X,0..SimulationScreenInfo.Y) := (others => (others => 'X'));
       CarsData : TCarData.Vector;
       NodesData : TNodeData.Vector;
+
+      LastAddCar : PFCar := null; -- temporary
+      LastAddNode : PFNode := null; -- temporary
    end SimulationDataProtect;
 
 
    protected body SimulationDataProtect is
       procedure AddCar(Index: in FMatrixIndex; Value : in Character) is
-         ToAdd : PFCar := new FCar'(X        => Index.X,
-                                   Y        => Index.Y,
-                                   CarColor => White,
-                                   Sign     => Value);
       begin
-         CarsData.Append(New_Item => ToAdd);
+         -- Check if car on index position not exist already
+         if(CheckIfCarExisted(Index => Index) = False) then
+            CarsData.Append(New_Item => new FCar'(X        => Index.X,
+                                                  Y        => Index.Y,
+                                                  CarColor => White,
+                                                  Sign     => 'X'));
+            LastAddCar := CarsData.Last_Element;
+         else
+            LastAddCar := null;
+         end if;
+
       end AddCar;
 
-      procedure RemoveCar(Index: in FMatrixIndex) is
+      procedure RemoveCar(CarPointer: in PFCar) is
       begin
-         null;
+         if(CarPointer /= null) then
+            CarsData.Delete(Index => CarsData.Find_Index(CarPointer),
+                            Count => 1);
+         end if;
       end RemoveCar;
 
       procedure InitNodesData is
       begin
-         null;
+         NodesData.Append(new FNode'(X         => 0,
+                                     Y         => 0,
+                                     NodeColor => Green,
+                                     Data      => To_Unbounded_String("__________")));
       end InitNodesData;
+
+      function CheckIfCarExisted(Index : in FMatrixIndex) return Boolean is
+      begin
+         for I of CarsData loop
+            if(I.X = Index.X and I.Y = Index.Y) then
+               return True;
+            end if;
+         end loop;
+         return False;
+      end CheckIfCarExisted;
+
+      -- GETTERS&SETTERS
 
       function GetCarsData return TCarData.Vector is
       begin
@@ -59,19 +91,36 @@ procedure Main is
          return NodesData;
       end GetNodesData;
 
+      function GetLastAddCar return PFCar is
+      begin
+         return LastAddCar;
+      end GetLastAddCar;
+
+      function GetLastAddNode return PFNode is
+      begin
+         return LastAddNode;
+      end GetLastAddNode;
+
    end SimulationDataProtect;
 
 
     -- FUNCTIONS,PROCEDURES --
 
 
+
    procedure RefreshScreen is
-      Tmp : TCarData.Vector := SimulationDataProtect.GetCarsData;
    begin
-      for I of Tmp loop
+      --Cars
+      for I of SimulationDataProtect.GetCarsData loop
          Goto_XY(I.X,I.Y);
          Set_Foreground(I.CarColor);
          Put(I.Sign);
+      end loop;
+      --Nodes
+      for I of SimulationDataProtect.GetNodesData loop
+         Goto_XY(I.X,I.Y);
+         Set_Foreground(I.NodeColor);
+         Put(To_String(I.Data));
       end loop;
    end RefreshScreen;
 
@@ -92,6 +141,7 @@ procedure Main is
    end Simulation;
 
    task CarGenerator is
+      entry Start;
    end CarGenerator;
 
    task CarHandler is
@@ -128,6 +178,7 @@ procedure Main is
    task body Simulation is
    begin
       accept Start;
+      SimulationDataProtect.InitNodesData; -- init static nodes (not moveable)
       loop
          delay ScreenRefreshInterval;
 
@@ -137,7 +188,12 @@ procedure Main is
 
    task body CarGenerator is
    begin
-      null;
+      accept Start;
+      loop
+         SimulationDataProtect.AddCar(Index => (X=>RandInteger(0,SimulationScreenInfo.X),Y=>RandInteger(0,SimulationScreenInfo.Y)),
+                                      Value => 'X');
+         delay 2.0;
+      end loop;
    end CarGenerator;
 
 
@@ -148,18 +204,19 @@ procedure Main is
 
 
    -- MAIN --
+   S: PFCar:= null;
 
 begin
 
-   --Simulation.Start;
+   --CarGenerator.Start;
 
-   --Screen.Start;
+   Simulation.Start;
 
-   --Keyboard.Start;
+   Screen.Start;
 
-   SimulationDataProtect.AddCar(Index => (X=>0,Y=>0),Value => 'X');
+   Keyboard.Start;
 
-   Put_Line(SimulationDataProtect.GetCarsData.Length'Img & " i " & SimulationDataProtect.GetCarsData.Element(0).Sign);
+
 
 
 end Main;
