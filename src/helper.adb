@@ -3,13 +3,15 @@ use Ada.Text_IO;
 
 package body Helper is
 
-   function RandInteger(A,B:Integer) return Integer is
-      package Los_Liczby is new Ada.Numerics.Discrete_Random(Integer);
-      use Los_Liczby;
-      Gen : Los_Liczby.Generator;
+   function RandInteger(A,B:Natural) return Natural is
+      subtype Rand_Range is Natural range A..B;
+      package Rand_Int is new Ada.Numerics.Discrete_Random(Rand_Range);
+      use Rand_Int;
+      G : Generator;
    begin
-      Reset(Gen);
-      return (Random(Gen) mod B + A);
+      Reset(G);
+      return (Random(G));
    end RandInteger;
+
 
 end Helper;

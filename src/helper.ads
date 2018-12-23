@@ -1,6 +1,6 @@
-with NT_Console,Ada.Unchecked_Deallocation,Ada.Containers.Vectors;
+with NT_Console,Ada.Unchecked_Deallocation,Ada.Containers.Vectors,Ada.Strings.Unbounded;
 
-use NT_Console, Ada.Containers;
+use NT_Console, Ada.Containers,Ada.Strings.Unbounded;
 
 
 package Helper is
@@ -19,11 +19,15 @@ package Helper is
       X,Y: Natural := 0;
    end record;
    
+   -- Car move direction
+   type EDirection is (D_LEFT,D_RIGHT);
+   
    -- Cars (moving objects)
    type FCar is record
       X,Y : Natural := 0;
       CarColor : Color_Type := Black;
       Sign : Character;
+      Direction : EDirection;
    end record;
    
    -- Pointer to FCar
@@ -33,13 +37,26 @@ package Helper is
    type FNode is record
       X,Y : Natural := 0;
       NodeColor : Color_Type := White;
+      Data : Unbounded_String;
    end record;
    
    -- Pointer to Node
    type PFNode is access FNode;
    
-   -- propably to delete
-   type TScreenData is array (Natural range<>,Natural range<>) of Character;
+   -- Text static
+   type FText is record
+      X,Y : Natural := 0;
+      TextColor : Color_Type := White;
+      Text : Unbounded_String;
+   end record;
+   
+   -- Pointer to text
+   type PFText is access FText;
+   
+   
+   
+   --Gate array : True - free, False - working
+   type TGate is array (1..6) of Boolean; 
    
    --Cars array
    package TCarData is new Vectors (Index_Type   => Natural,
@@ -49,13 +66,18 @@ package Helper is
    --Nodes array
    package TNodeData is new Vectors (Index_Type   => Natural,
                                      Element_Type => PFNode);
-   use TNodeData;     
+   use TNodeData; 
+   
+   -- Texts array
+   package TTextData is new Vectors(Index_Type   => Natural,
+                                    Element_Type => PFText);
+   use TTextData;
    
    
    -----Methods------ 
    
    -- Rand integer from range A-B
-   function RandInteger(A,B:Integer) return Integer;
+   function RandInteger(A,B:Natural) return Natural;
    
    
    -- Deallocate Car object
@@ -66,4 +88,10 @@ package Helper is
    procedure Delete_Node is new Ada.Unchecked_Deallocation
                                             (Object => FNode, Name => PFNode);
 
+   
+   --Deallocate Text object
+   procedure Delete_Text is new Ada.Unchecked_Deallocation(Object => FText,
+                                                           Name   => PFText);
+   
+   
 end Helper;
