@@ -26,18 +26,20 @@ RV NO_STANDARD_STORAGE_POOLS
 RV NO_TASK_HIERARCHY
 RV NO_TASKING
 RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 RV MAX_TASK_ENTRIES=1
 RV MAX_TASKS=1+
 RV MAX_ENTRY_QUEUE_LENGTH=1+
 
-U main%b		main.adb		8f08d68d NE OO SU
+U main%b		main.adb		611d6b13 NE OO SU
 W ada%s			ada.ads			ada.ali
 Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 Z ada.real_time%s	a-reatim.adb		a-reatim.ali
 W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
 W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
@@ -73,19 +75,20 @@ D a-iteint.ads		20180524051736 7c7305e9 ada.iterator_interfaces%s
 D a-reatim.ads		20180524051738 0240fc73 ada.real_time%s
 D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
 D a-string.ads		20180524051736 90ac6797 ada.strings%s
+D a-strfix.ads		20180524051738 d07c346e ada.strings.fixed%s
 D a-strmap.ads		20180524051736 e8bb714a ada.strings.maps%s
 D a-strunb.ads		20180524051738 8098c91f ada.strings.unbounded%s
 D a-tags.ads		20180524051738 491b781d ada.tags%s
 D a-textio.ads		20180524051738 881db35a ada.text_io%s
 D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
 D a-uncdea.ads		20180524051736 eff36322 ada.unchecked_deallocation%s
-D helper.ads		20181221214252 f99073ad helper%s
+D helper.ads		20181223152700 bf177021 helper%s
 D interfac.ads		20180524051736 5ab55268 interfaces%s
 D i-c.ads		20180524051736 5421119b interfaces.c%s
 D i-cstrin.ads		20180524051736 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
-D main.adb		20181221214434 2a93195d main%b
-D nt_console.ads	20181221182144 548ec638 nt_console%s
+D main.adb		20181223165304 527d9321 main%b
+D nt_console.ads	20181222212120 548ec638 nt_console%s
 D system.ads		20180524051738 32a08138 system%s
 D s-atacco.ads		20180524051738 4c36d12f system.address_to_access_conversions%s
 D s-atocou.ads		20180524051738 b45c2d8d system.atomic_counters%s
@@ -123,111 +126,155 @@ D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
 D s-win32.ads		20180524051736 b7f96285 system.win32%s
 X 1 ada.ads
-16K9*Ada 20e8 27|1r6 1r38 3r5 3r36
+16K9*Ada 20e8 28|1r6 1r38 1r60 3r5 3r36 3r58
 X 6 a-contai.ads
 20I9*Count_Type<integer>
 X 8 a-convec.ads
 78I12*Extended_Index{integer}
-88R9*Vector<10|43R9> 27|27r44[22|43] 28r46[22|48] 32r27[22|43] 33r29[22|48]
-. 84r44[22|43] 89r46[22|48]
-431U14*Append 27|45s22[22|43] 66s20[22|48]
-433p7 New_Item{22|30P9} 27|45r29[22|43]
-466U14*Delete 27|59s22[22|43]
-468i7 Index{78I12[22|43]} 27|59r29[22|43]
-469i7 Count{6|20I9} 27|60r29[22|43]
-530V13*Last_Element{22|30P9} 27|49s36[22|43]
-551V13*Find_Index{78I12[22|43]} 27|59s47[22|43]
+88R9*Vector<10|43R9> 28|33r44[23|57] 34r46[23|62] 35r46[23|67] 39r27[23|57]
+. 40r29[23|62] 41r29[23|67] 181r44[23|57] 186r46[23|62] 191r46[23|67]
+196V13*Element{23|54P9} 28|136s20[23|67]
+431U14*Append 28|53s22[23|57] 78s20[23|62] 83s20[23|62] 88s20[23|62] 93s20[23|62]
+. 100s23[23|62] 104s23[23|62] 109s26[23|62] 121s20[23|67] 127s20[23|67]
+433p7 New_Item{23|34P9} 28|53r29[23|57]
+466U14*Delete 28|68s22[23|57]
+468i7 Index{78I12[23|57]} 28|68r29[23|57]
+469i7 Count{6|20I9} 28|69r29[23|57]
+530V13*Last_Element{23|34P9} 28|58s36[23|57]
+551V13*Find_Index{78I12[23|57]} 28|68s47[23|57]
 X 12 a-iteint.ads
 24h9 Forward_Iterator
 32h9 Reversible_Iterator<24R9[8|111]>
 X 15 a-string.ads
-16K13*Strings 35e16 27|1r42 3r40
-X 17 a-strunb.ads
-76K21*Unbounded 491e26 27|1w50 3r48
-94V13*To_Unbounded_String{79R9} 27|69s51
-100V13*To_String{string} 27|123s14
-X 19 a-textio.ads
-49K13*Text_IO 471e16 27|1w10 3r9
-208U14*Put 27|117s10
-242U14*Put 27|123s10
-X 22 helper.ads
-6K9*Helper 67e11 27|1w31 3r29
-11R9*FScreenInfo 15e14 27|11r27
-12i7*X{natural} 27|11m42 194r87
-12i9*Y{natural} 27|11m50 194r128
-13i7*PaddingLeft{natural} 27|11m56
-14i7*PaddingTop{natural} 27|11m71
-18R9*FMatrixIndex 20e14 27|20r34 24r45 41r34 72r45
-19i7*X{natural} 27|45r69 75r28 194m49
-19i9*Y{natural} 27|46r69 75r46 194m90
-23R9*FCar 27e14 27|45r45
-24i7*X{natural} 27|45m51 75r18 115r20
-24i9*Y{natural} 27|46m51 75r36 115r24
-25e7*CarColor{28|34E9} 27|47m51 116r27
-26e7*Sign{character} 27|48m51 117r16
-30P9*PFCar(23R9) 27|21r42 29r37 35r20 56r42 94r37 208r7
-33R9*FNode 37e14 27|66r31
-34i7*X{natural} 27|66m38 121r20
-34i9*Y{natural} 27|67m38 121r24
-35e7*NodeColor{28|34E9} 27|68m38 122r27
-36r7*Data{17|79R9} 27|69m38 123r26
-40P9*PFNode(33R9) 27|30r38 36r21 99r38
-43K12*TCarData[8|73] 27|27r35 32r18 84r35
-48K12*TNodeData[8|73] 27|28r36 33r19 89r36
-56V13*RandInteger{integer} 27|194s52 194s93
-X 27 main.adb
-6U11*Main 6b11 223l5 223t9
-11r4 SimulationScreenInfo{22|11R9} 194r66 194r107
-14o4 ScreenRefreshInterval{duration} 161r19 172r19 184r16
-19w14 SimulationDataProtect 40b19 104l8 104t29 114r16 120r16 182r7 194r10
-20U17 AddCar 20>24 20>48 41b17 54l11 54t17 194s32
-20r24 Index{22|18R9} 41b24 44r40 45r63 46r63 194r39
-20e48 Value{character} 41b48 195r39
-21U17 RemoveCar 21>27 56b17 62l11 62t20
-21p27 CarPointer{22|30P9} 56b27 58r13 59r58
-22U17 InitNodesData 64b17 70l11 70t24 182s29
-24V16 CheckIfCarExisted{boolean} 24>34 44s13 72b16 80l11 80t28
-24r34 Index{22|18R9} 44r31 72b34 75r22 75r40
-27V16 GetCarsData{8|88R9[22|43]} 84b16 87l11 87t22 114s38
-28V16 GetNodesData{8|88R9[22|48]} 89b16 92l11 92t23 120s38
-29V16 GetLastAddCar{22|30P9} 94b16 97l11 97t24
-30V16 GetLastAddNode{22|40P9} 99b16 102l11 102t25
-32r7 CarsData{8|88R9[22|43]} 45r13 49r27 59r13 59r38 74r19 86r17
-33r7 NodesData{8|88R9[22|48]} 66r10 91r17
-35p7 LastAddCar{22|30P9} 49r13 51r13 96r17
-36p7 LastAddNode{22|40P9} 101r17
-74p14 I{22|30P9} 75r16 75r34
-111U14 RefreshScreen 111b14 126l8 126t21 160s13
-114p11 I{22|30P9} 115r18 115r22 116r25 117r14
-120p11 I{22|40P9} 121r18 121r22 122r25 123r24
-132t9 Screen 155b14 164l8 164t14 216r4
-133Y13 Start 157b14 163l11 163t16 216s11
-136t9 Keyboard 167b14 176l8 176t16 218r4
-137Y13 Start 169b14 175l11 175t16 218s13
-140t9 Simulation 179b14 187l8 187t18 214r4
-141Y13 Start 181b14 214s15
-144t9 CarGenerator 190b14 198l8 198t20 212r4
-145Y13 Start 192b14 212s17
-148t9 CarHandler 201b14 204l8 204t18
-208p4 S{22|30P9}
-X 28 nt_console.ads
-25K9*NT_Console 27|1w19 3r18 28|228e15
-35n14*Blue{34E9} 27|159r26
-35n20*Green{34E9} 27|68r51
-37n30*White{34E9} 27|47r63
-191U14*Set_Cursor 27|171s13 173s13
-196U14*Goto_XY 27|115s10 121s10
-207U14*Set_Foreground 27|116s10 122s10
-214U14*Clear_Screen 27|159s13
-X 29 system.ads
+16K13*Strings 35e16 28|1r42 1r64 3r40 3r62
+X 16 a-strfix.ads
+18K21*Fixed 251e22 28|1w72 3r70
+243V14*"*"{string} 28|74s35 75s35
+X 18 a-strunb.ads
+76K21*Unbounded 491e26 28|1w50 3r48
+79R9*Unbounded_String<10|43R9> 474e14 28|16r10
+94V13*To_Unbounded_String{79R9} 28|81s51 86s51 91s51 96s51 103s54 107s54
+. 112s57 124s51 130s51 136s39
+100V13*To_String{string} 28|225s14 231s14
+119V14*"&"{79R9} 28|130s80 136s68
+X 20 a-textio.ads
+49K13*Text_IO 471e16 28|1w10 3r9
+208U14*Put 28|219s10
+242U14*Put 28|154s13 156s13 225s10 231s10
+X 23 helper.ads
+6K9*Helper 92e11 28|1w31 3r29
+11R9*FScreenInfo 15e14 28|11r27
+12i7*X{natural} 28|11m42
+12i9*Y{natural} 28|11m50 128r104
+13i7*PaddingLeft{natural} 28|11m56 121r74 127r74 217r43 223r43
+14i7*PaddingTop{natural} 28|11m72 128r72 217r80 223r80
+18R9*FMatrixIndex 20e14 28|21r34 29r45 30r41 49r34 159r45 169r41
+19i7*X{natural} 28|53r70 162r28 172r28 310m52 315m52 331m85
+19i9*Y{natural} 28|54r70 162r46 172r46 310m58 315m57 331m92
+23E9*EDirection 23e39 28|21r79 49r79
+23n24*D_LEFT{23E9} 28|142r30 311r62 330r30
+23n31*D_RIGHT{23E9} 28|316r62 330r69
+26R9*FCar 31e14 28|53r45
+27i7*X{natural} 28|53m51 143r49 144m21 144r28 147r49 148m21 148r28 162r18
+. 172r18 217r20 330r43 330r83 331r90
+27i9*Y{natural} 28|54m51 143r55 147r55 162r36 172r36 217r57 331r97
+28e7*CarColor{29|34E9} 28|55m51 218r27
+29e7*Sign{character} 28|56m51 219r16
+30e7*Direction{23E9} 28|57m51 142r18 330r18 330r57
+34P9*PFCar(26R9) 28|22r42 30r62 36r37 43r20 65r42 169r62 196r37
+37R9*FNode 41e14 28|78r31 83r31 88r31 93r31 100r34 104r34 109r37
+38i7*X{natural} 28|78m38 83m38 88m38 93m38 100m41 104m41 109m44 223r20
+38i9*Y{natural} 28|79m38 84m38 89m38 94m38 101m41 105m41 110m44 223r57
+39e7*NodeColor{29|34E9} 28|80m38 85m38 90m38 95m38 102m41 106m41 111m44 224r27
+40r7*Data{18|79R9} 28|81m38 86m38 91m38 96m38 103m41 107m41 112m44 225r26
+44P9*PFNode(37R9) 28|37r38 44r21 201r38
+47R9*FText 51e14 28|121r31 127r31
+48i7*X{natural} 28|121m38 127m38 229r20
+48i9*Y{natural} 28|122m38 128m38 229r24
+49e7*TextColor{29|34E9} 28|123m38 129m38 230r27
+50r7*Text{18|79R9} 28|124m38 130m38 136m31 231r26
+54P9*PFText(47R9)
+57K12*TCarData[8|73] 28|33r35 39r18 181r35
+62K12*TNodeData[8|73] 28|34r36 40r19 186r36
+67K12*TTextData[8|73] 28|35r36 41r19 191r36
+75V13*RandInteger{natural} 28|307s13 309s29 314s29
+X 28 main.adb
+6U11*Main 6b11 355l5 355t9
+11r4 SimulationScreenInfo{23|11R9} 121r53 127r53 128r51 128r83 217r22 217r59
+. 223r22 223r59
+14o4 ScreenRefreshInterval{duration} 269r19 280r19 293r16 334r16
+16r4 Log{18|79R9} 130r82 136r70
+20w14 SimulationDataProtect 48b19 206l8 206t29 216r16 222r16 228r16 290r7
+. 291r7 294r10 295r10 310r13 315r13 329r19 331r16 331r48
+21U17 AddCar 21>24 21>48 21>70 49b17 63l11 63t17 310s35 315s35
+21r24 Index{23|18R9} 49b24 52r40 53r64 54r64 310r42 315r42
+21e48 Value{character} 49b48 311r42 316r42
+21e70 Dir{23|23E9} 49b70 57r64 311r55 316r55
+22U17 RemoveCar 22>27 65b17 71l11 71t20 331s38
+22p27 CarPointer{23|34P9} 65b27 67r13 68r58
+23U17 InitNodesData 73b17 116l11 116t24 290s29
+24U17 InitTextsData 118b17 131l11 131t24 291s29
+25U17 UpdateTextsData 133b17 137l11 137t26 294s32
+26U17 MoveCars 139b17 157l11 157t19 295s32
+29V16 CheckIfCarExisted{boolean} 29>34 52s13 143s19 147s19 159b16 167l11
+. 167t28
+29r34 Index{23|18R9} 52r31 143r37 147r37 159b34 162r22 162r40
+30V16 GetCarPointer{23|34P9} 30>30 169b16 177l11 177t24 331s70
+30r30 Index{23|18R9} 169b30 172r22 172r40
+33V16 GetCarsData{8|88R9[23|57]} 181b16 184l11 184t22 216s38 329s41
+34V16 GetNodesData{8|88R9[23|62]} 186b16 189l11 189t23 222s38
+35V16 GetTextsData{8|88R9[23|67]} 191b16 194l11 194t23 228s38
+36V16 GetLastAddCar{23|34P9} 196b16 199l11 199t24
+37V16 GetLastAddNode{23|44P9} 201b16 204l11 204t25
+39r7 CarsData{8|88R9[23|57]} 53r13 58r27 68r13 68r38 141r19 161r19 171r19
+. 183r17
+40r7 NodesData{8|88R9[23|62]} 78r10 83r10 88r10 93r10 100r13 104r13 109r16
+. 188r17
+41r7 TextsData{8|88R9[23|67]} 121r10 127r10 136r10 193r17
+43p7 LastAddCar{23|34P9} 58r13 60r13 198r17
+44p7 LastAddNode{23|44P9} 203r17
+74a10 A{string} 81r71 96r71
+75a10 B{string} 86r71 91r71
+99i14 J{integer} 101r54 105r54 108r17 108r28 108r40 108r51 110r57
+141p14 I{23|34P9} 142r16 143r47 143r53 144r19 144r26 147r47 147r53 148r19
+. 148r26
+161p14 I{23|34P9} 162r16 162r34
+171p14 I{23|34P9} 172r16 172r34 173r23
+213U14 RefreshScreen 213b14 233l8 233t21 268s13
+216p11 I{23|34P9} 217r18 217r55 218r25 219r14
+222p11 I{23|44P9} 223r18 223r55 224r25 225r24
+228p11 I{23|54P9} 229r18 229r22 230r25 231r24
+239t9 Screen 263b14 272l8 272t14 349r4
+240Y13 Start 265b14 271l11 271t16 349s11
+243t9 Keyboard 275b14 284l8 284t16 351r4
+244Y13 Start 277b14 283l11 283t16 351s13
+247t9 Simulation 287b14 297l8 297t18 347r4
+248Y13 Start 289b14 347s15
+251t9 CarGenerator 300b14 321l8 321t20 343r4
+252Y13 Start 304b14 343s17
+255t9 CarHandler 324b14 336l8 336t18 345r4
+256Y13 Start 326b14 345s15
+301i7 CarPositionY{integer} 309m13 310r61 314m13 315r60
+302i7 Temp{integer} 306m10 306r18
+329p14 I{23|34P9} 330r16 330r41 330r55 330r81 331r88 331r95
+X 29 nt_console.ads
+25K9*NT_Console 28|1w19 3r18 29|228e15
+35n14*Blue{34E9} 28|267r26
+35n20*Green{34E9} 28|80r51 85r51 90r51 95r51 102r54 106r54 111r57
+37n30*White{34E9} 28|55r64 123r51 129r51
+191U14*Set_Cursor 28|279s13 281s13
+196U14*Goto_XY 28|217s10 223s10 229s10
+207U14*Set_Foreground 28|218s10 224s10 230s10
+214U14*Clear_Screen 28|267s13
+X 30 system.ads
 67M9*Address
-X 37 s-memory.ads
-53V13*Alloc{29|67M9} 103i<c,__gnat_malloc>22
+X 38 s-memory.ads
+53V13*Alloc{30|67M9} 103i<c,__gnat_malloc>22
 68U14*Free 104i<c,__gnat_free>22
-76V13*Realloc{29|67M9} 105i<c,__gnat_realloc>22
-X 45 s-stausa.ads
+76V13*Realloc{30|67M9} 105i<c,__gnat_realloc>22
+X 46 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
-X 47 s-stalib.adb
+X 48 s-stalib.adb
 93U14 Break_Start 94i<c,__gnat_break_start>22
 
