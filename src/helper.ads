@@ -53,6 +53,11 @@ package Helper is
    -- Pointer to text
    type PFText is access FText;
    
+   
+   
+   --Gate array : True - free, False - working
+   type TGate is array (1..6) of Boolean; 
+   
    --Cars array
    package TCarData is new Vectors (Index_Type   => Natural,
                                     Element_Type => PFCar);

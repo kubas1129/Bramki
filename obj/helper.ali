@@ -17,7 +17,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U helper%b		helper.adb		bddcb977 NE OO PK
+U helper%b		helper.adb		92fb351d NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
 W ada.numerics.discrete_random%s
@@ -26,7 +26,7 @@ W ada.text_io%s		a-textio.adb		a-textio.ali
 W system%s		system.ads		system.ali
 Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
 
-U helper%s		helper.ads		fad913fb EE OO PF PK
+U helper%s		helper.ads		d5fe9f91 EE OO PF PK
 W ada%s			ada.ads			ada.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
 Z ada.containers.generic_array_sort%s
@@ -76,7 +76,7 @@ D a-tags.ads		20180524051738 491b781d ada.tags%s
 D a-textio.ads		20180524051738 881db35a ada.text_io%s
 D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
 D a-uncdea.ads		20180524051736 eff36322 ada.unchecked_deallocation%s
-D helper.ads		20181223152700 bf177021 helper%s
+D helper.ads		20181223214256 9030fc4b helper%s
 D helper.adb		20181223152642 fb3327e3 helper%b
 D interfac.ads		20180524051736 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
@@ -111,14 +111,14 @@ D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
 D s-valuns.ads		20180524051738 10a8ed3b system.val_uns%s
 D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 25|1r17 1r44 1r67 3r17 3r32 79r32 83r33 88r33 26|1r6 1r18 2r5
+16K9*Ada 20e8 25|1r17 1r44 1r67 3r17 3r32 84r32 88r33 93r33 26|1r6 1r18 2r5
 . 8r31
 X 4 a-contai.ads
 16K13*Containers 24e19 25|1r48 3r21
 X 8 a-convec.ads
-61I9 Index_Type 25|57r37 62r38 67r37
-62+9 Element_Type 25|58r37 63r38 68r37
-73k24*Vectors 824e27 25|1w59 57r28 62r29 67r29
+61I9 Index_Type 25|62r37 67r38 72r37
+62+9 Element_Type 25|63r37 68r38 73r37
+73k24*Vectors 824e27 25|1w59 62r28 67r29 72r29
 X 13 a-iteint.ads
 24h9 Forward_Iterator
 32h9 Reversible_Iterator<24R9[8|111]>
@@ -139,11 +139,11 @@ X 20 a-strunb.ads
 X 22 a-textio.ads
 49K13*Text_IO 471e16 26|1w10 2r9
 X 24 a-uncdea.ads
-17+9 Object 25|80r46 84r46 88r60
-18P9 Name(17+9) 25|80r62 84r63 89r60
-20u15*Unchecked_Deallocation 25|1w21 79r36 83r37 88r37
+17+9 Object 25|85r46 89r46 93r60
+18P9 Name(17+9) 25|85r62 89r63 94r60
+20u15*Unchecked_Deallocation 25|1w21 84r36 88r37 93r37
 X 25 helper.ads
-6K9*Helper 92l5 92e11 26|4b14 17l5 17t11
+6K9*Helper 97l5 97e11 26|4b14 17l5 17t11
 11R9*FScreenInfo 15e14
 12i7*X{natural}
 12i9*Y{natural}
@@ -155,34 +155,35 @@ X 25 helper.ads
 23E9*EDirection 23e39 30r19
 23n24*D_LEFT{23E9}
 23n31*D_RIGHT{23E9}
-26R9*FCar 31e14 34r25 80r56
+26R9*FCar 31e14 34r25 85r56
 27i7*X{natural}
 27i9*Y{natural}
 28e7*CarColor{29|34E9}
 29e7*Sign{character}
 30e7*Direction{23E9}
-34P9*PFCar(26R9) 58r53 80r70
-37R9*FNode 41e14 44r26 84r56
+34P9*PFCar(26R9) 63r53 85r70
+37R9*FNode 41e14 44r26 89r56
 38i7*X{natural}
 38i9*Y{natural}
 39e7*NodeColor{29|34E9}
 40r7*Data{20|79R9}
-44P9*PFNode(37R9) 63r54 84r71
-47R9*FText 51e14 54r26 88r70
+44P9*PFNode(37R9) 68r54 89r71
+47R9*FText 51e14 54r26 93r70
 48i7*X{natural}
 48i9*Y{natural}
 49e7*TextColor{29|34E9}
 50r7*Text{20|79R9}
-54P9*PFText(47R9) 68r53 89r70
-57K12*TCarData[8|73] 59r8
-62K12*TNodeData[8|73] 64r8
-67K12*TTextData[8|73] 69r8
-75V13*RandInteger{natural} 75>25 75>27 26|6b13 14l8 14t19
-75i25 A{natural} 26|6b25 7r43
-75i27 B{natural} 26|6b27 7r46
-79U14*Delete_Car[24|20]
-83U14*Delete_Node[24|20]
-88U14*Delete_Text[24|20]
+54P9*PFText(47R9) 73r53 94r70
+59A9*TGate(boolean)<integer>
+62K12*TCarData[8|73] 64r8
+67K12*TNodeData[8|73] 69r8
+72K12*TTextData[8|73] 74r8
+80V13*RandInteger{natural} 80>25 80>27 26|6b13 14l8 14t19
+80i25 A{natural} 26|6b25 7r43
+80i27 B{natural} 26|6b27 7r46
+84U14*Delete_Car[24|20]
+88U14*Delete_Node[24|20]
+93U14*Delete_Text[24|20]
 X 26 helper.adb
 7I15 Rand_Range{natural} 8r60
 8K15 Rand_Int[15|44] 9r11

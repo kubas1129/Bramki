@@ -13,7 +13,20 @@ procedure Main is
 
    ScreenRefreshInterval : Duration := 1.0;
 
+   -- Log variable
    Log : Unbounded_String;
+
+
+   -- Predefine Gate task
+   task type Gate is
+      entry Start;
+      entry HandleCar(CX,CY : in Natural);
+   end Gate;
+
+   -- Gates handler array
+   type Gates is array (1..6) of Gate;
+   GatesHandler : Gates;
+
 
    -- PROTECTED
 
@@ -24,10 +37,13 @@ procedure Main is
       procedure InitTextsData;
       procedure UpdateTextsData;
       procedure MoveCars;
+      procedure GateMoveCar(X,Y : Natural);
+      procedure SetGateState(GateIndex : Positive; Value : Boolean);
 
 
       function CheckIfCarExisted(Index : in FMatrixIndex) return Boolean;
       function GetCarPointer(Index : in FMatrixIndex) return PFCar;
+      function GetGateState(GateIndex : in Positive) return Boolean;
 
       -- GETTERS&SETTERS
       function GetCarsData return TCarData.Vector;
@@ -39,6 +55,7 @@ procedure Main is
       CarsData : TCarData.Vector;
       NodesData : TNodeData.Vector;
       TextsData : TTextData.Vector;
+      GatesState: TGate := (others => True);
 
       LastAddCar : PFCar := null; -- temporary
       LastAddNode : PFNode := null; -- temporary
@@ -141,19 +158,24 @@ procedure Main is
          for I of CarsData loop
             if(I.Direction = D_LEFT) then
                if(CheckIfCarExisted(Index => (I.X-1,I.Y)) = False) then
-                  I.X := I.X -1;
+                  if(I.X /= 15) then
+                     I.X := I.X -1;
+                  end if;
                end if;
             else
                if(CheckIfCarExisted(Index => (I.X+1,I.Y)) = False) then
-                  I.X := I.X +1;
+                  if(I.X /= 15) then
+                     I.X := I.X +1;
+                  end if;
                end if;
             end if;
          end loop;
+
       exception
          when PROGRAM_ERROR =>
-            Put("SPECIFY");
+            Put("PROGRAM_ERROR");
          when others =>
-            Put("OTHERS");
+            Put("EXCEPTION");
       end MoveCars;
 
       function CheckIfCarExisted(Index : in FMatrixIndex) return Boolean is
@@ -175,6 +197,27 @@ procedure Main is
          end loop;
          return null;
       end GetCarPointer;
+
+      procedure GateMoveCar(X,Y : Natural) is
+      begin
+         if(GetCarPointer((X=>X,Y=>Y)).Direction = D_LEFT) then
+            GetCarPointer((X=>X,Y=>Y)).X := 14;
+         else
+            GetCarPointer((X=>X,Y=>Y)).X := 16;
+         end if;
+      end GateMoveCar;
+
+      procedure SetGateState(GateIndex : Positive; Value : Boolean) is
+      begin
+         GatesState(GateIndex) := Value;
+      end SetGateState;
+
+      function GetGateState(GateIndex : in Positive) return Boolean is
+      begin
+         return GatesState(GateIndex);
+      end GetGateState;
+
+
 
       -- GETTERS&SETTERS
 
@@ -214,9 +257,11 @@ procedure Main is
    begin
       --Cars
       for I of SimulationDataProtect.GetCarsData loop
-         Goto_XY(I.X+SimulationScreenInfo.PaddingLeft,I.Y+SimulationScreenInfo.PaddingTop);
-         Set_Foreground(I.CarColor);
-         Put(I.Sign);
+         if(I.X /= 15) then
+            Goto_XY(I.X+SimulationScreenInfo.PaddingLeft,I.Y+SimulationScreenInfo.PaddingTop);
+            Set_Foreground(I.CarColor);
+            Put(I.Sign);
+         end if;
       end loop;
       --Nodes
       for I of SimulationDataProtect.GetNodesData loop
@@ -230,6 +275,7 @@ procedure Main is
          Set_Foreground(I.TextColor);
          Put(To_String(I.Text));
       end loop;
+
    end RefreshScreen;
 
 
@@ -289,21 +335,51 @@ procedure Main is
       accept Start;
       SimulationDataProtect.InitNodesData; -- init static nodes (not moveable)
       SimulationDataProtect.InitTextsData;
+
+      -- Init task loop
+      for J of GatesHandler loop
+         J.Start;
+      end loop;
+
       loop
          delay ScreenRefreshInterval;
          SimulationDataProtect.UpdateTextsData;
          SimulationDataProtect.MoveCars;
+
+         --Gate handler
+         for I of SimulationDataProtect.GetCarsData loop
+            if(I.X = 15) then
+               if(I.Y = 1 and SimulationDataProtect.GetGateState(1) = True) then
+                  SimulationDataProtect.SetGateState(1,False);
+                  GatesHandler(1).HandleCar(15,1);
+               elsif(I.Y = 2 and SimulationDataProtect.GetGateState(2) = True) then
+                  SimulationDataProtect.SetGateState(2,False);
+                  GatesHandler(2).HandleCar(15,2);
+               elsif(I.Y = 3 and SimulationDataProtect.GetGateState(3) = True) then
+                  SimulationDataProtect.SetGateState(3,False);
+                  GatesHandler(3).HandleCar(15,3);
+               elsif(I.Y = 6 and SimulationDataProtect.GetGateState(4) = True) then
+                  SimulationDataProtect.SetGateState(4,False);
+                  GatesHandler(4).HandleCar(15,6);
+               elsif(I.Y = 7 and SimulationDataProtect.GetGateState(5) = True) then
+                  SimulationDataProtect.SetGateState(5,False);
+                  GatesHandler(5).HandleCar(15,7);
+               elsif(I.Y = 8 and SimulationDataProtect.GetGateState(6) = True) then
+                  SimulationDataProtect.SetGateState(6,False);
+                  GatesHandler(6).HandleCar(15,8);
+               end if;
+            end if;
+
+         end loop;
       end loop;
    end Simulation;
 
 
    task body CarGenerator is
       CarPositionY : Integer := 0;
-      Temp : Integer := 0;
    begin
       accept Start;
       loop
-         Temp := Temp +1;
          if(RandInteger(0,1) = 0) then
             -- Generate Left move
             CarPositionY := RandInteger(1,3);
@@ -315,7 +391,6 @@ procedure Main is
             SimulationDataProtect.AddCar(Index => (X=>1,Y=>CarPositionY),
                                          Value => 'X',Dir => D_RIGHT);
          end if;
-
          delay 2.0;
       end loop;
    end CarGenerator;
@@ -336,6 +411,39 @@ procedure Main is
    end CarHandler;
 
 
+   task body Gate is
+      XX,YY : Natural;
+   begin
+      accept Start;
+      loop
+         accept HandleCar(CX,CY : in Natural) do
+            XX := CX;
+            YY := CY;
+         end HandleCar;
+         --Wait delay in gate
+         delay 3.0;
+         -- Move Car out of gate
+         SimulationDataProtect.GateMoveCar(X => XX,
+                                           Y => YY);
+         --Set gate state to True
+         if(YY = 1) then
+            SimulationDataProtect.SetGateState(1,True);
+         elsif(YY = 2) then
+            SimulationDataProtect.SetGateState(2,True);
+         elsif(YY = 3) then
+            SimulationDataProtect.SetGateState(3,True);
+         elsif(YY = 6) then
+            SimulationDataProtect.SetGateState(4,True);
+         elsif(YY = 7) then
+            SimulationDataProtect.SetGateState(5,True);
+         elsif(YY = 8) then
+            SimulationDataProtect.SetGateState(6,True);
+         end if;
+
+      end loop;
+   end Gate;
+
+
    -- MAIN --
 
 begin
@@ -349,7 +457,5 @@ begin
    Screen.Start;
 
    Keyboard.Start;
-
-
 
 end Main;
