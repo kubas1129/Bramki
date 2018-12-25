@@ -8,6 +8,8 @@ RN
 RV NO_EXCEPTION_HANDLERS
 RV NO_EXCEPTION_PROPAGATION
 RV NO_EXCEPTIONS
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
 RV NO_IO
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_UNCHECKED_DEALLOCATION
@@ -17,16 +19,17 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U helper%b		helper.adb		92fb351d NE OO PK
+U helper%b		helper.adb		e7dd020f NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
 W ada.numerics.discrete_random%s
+W ada.numerics.float_random%s  a-nuflra.adb	a-nuflra.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W system%s		system.ads		system.ali
 Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
 
-U helper%s		helper.ads		d5fe9f91 EE OO PF PK
+U helper%s		helper.ads		f6011920 EE OO PF PK
 W ada%s			ada.ads			ada.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
 Z ada.containers.generic_array_sort%s
@@ -68,6 +71,7 @@ D a-iteint.ads		20180524051736 7c7305e9 ada.iterator_interfaces%s
 D a-numeri.ads		20180524051736 bb51c45a ada.numerics%s
 D a-nudira.ads		20180524051736 71e55def ada.numerics.discrete_random%s
 D a-nudira.adb		20180524051736 72908cdb ada.numerics.discrete_random%b
+D a-nuflra.ads		20180524051736 4056ab7a ada.numerics.float_random%s
 D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
 D a-string.ads		20180524051736 90ac6797 ada.strings%s
 D a-strmap.ads		20180524051736 e8bb714a ada.strings.maps%s
@@ -76,8 +80,8 @@ D a-tags.ads		20180524051738 491b781d ada.tags%s
 D a-textio.ads		20180524051738 881db35a ada.text_io%s
 D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
 D a-uncdea.ads		20180524051736 eff36322 ada.unchecked_deallocation%s
-D helper.ads		20181223214256 9030fc4b helper%s
-D helper.adb		20181223152642 fb3327e3 helper%b
+D helper.ads		20181225112500 b3cf7afa helper%s
+D helper.adb		20181225183034 edbc3d3a helper%b
 D interfac.ads		20180524051736 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
 D nt_console.ads	20181222212120 548ec638 nt_console%s
@@ -111,39 +115,45 @@ D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
 D s-valuns.ads		20180524051738 10a8ed3b system.val_uns%s
 D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 25|1r17 1r44 1r67 3r17 3r32 84r32 88r33 93r33 26|1r6 1r18 2r5
-. 8r31
+16K9*Ada 20e8 26|1r17 1r44 1r67 3r17 3r32 87r32 91r33 96r33 27|1r6 1r18 1r47
+. 2r5 8r31 18r11
 X 4 a-contai.ads
-16K13*Containers 24e19 25|1r48 3r21
+16K13*Containers 24e19 26|1r48 3r21
 X 8 a-convec.ads
-61I9 Index_Type 25|62r37 67r38 72r37
-62+9 Element_Type 25|63r37 68r38 73r37
-73k24*Vectors 824e27 25|1w59 62r28 67r29 72r29
+61I9 Index_Type 26|62r37 67r38 72r37
+62+9 Element_Type 26|63r37 68r38 73r37
+73k24*Vectors 824e27 26|1w59 62r28 67r29 72r29
 X 13 a-iteint.ads
 24h9 Forward_Iterator
 32h9 Reversible_Iterator<24R9[8|111]>
 X 14 a-numeri.ads
-16K13*Numerics 32e17 26|1r22 8r35
+16K13*Numerics 32e17 27|1r22 1r51 8r35 18r15
 X 15 a-nudira.ads
-44k22*Discrete_Random 75e33 26|1w31 8r44
-50R9 Generator<42|63R9> 26|10r11[8]
-52V13 Random{integer} 26|13s15[8]
-55U14 Reset<42|100p14> 26|12s7[8]
+44k22*Discrete_Random 75e33 27|1w31 8r44
+50R9 Generator<43|63R9> 27|10r11[8]
+52V13 Random{integer} 27|13s15[8]
+55U14 Reset<43|100p14> 27|12s7[8]
 X 16 a-nudira.adb
-53V16 Random[42|83]{integer} 43|392b13[26|8]
-X 18 a-string.ads
-16K13*Strings 35e16 25|1r71 3r36
-X 20 a-strunb.ads
-76K21*Unbounded 491e26 25|1w79 3r44
-79R9*Unbounded_String<11|43R9> 474e14 25|40r14 50r14
-X 22 a-textio.ads
-49K13*Text_IO 471e16 26|1w10 2r9
-X 24 a-uncdea.ads
-17+9 Object 25|85r46 89r46 93r60
-18P9 Name(17+9) 25|85r62 89r63 94r60
-20u15*Unchecked_Deallocation 25|1w21 84r36 88r37 93r37
-X 25 helper.ads
-6K9*Helper 97l5 97e11 26|4b14 17l5 17t11
+53V16 Random[43|83]{integer} 44|392b13[27|8]
+X 17 a-nuflra.ads
+41K22*Float_Random 74e30 27|1w60 18r24
+47R9*Generator<43|63R9> 27|19r11
+49F12*Uniformly_Distributed{float}
+51V13*Random{49F12}<43|71p13> 27|22s23
+53U14*Reset<43|100p14> 27|21s7
+X 19 a-string.ads
+16K13*Strings 35e16 26|1r71 3r36
+X 21 a-strunb.ads
+76K21*Unbounded 491e26 26|1w79 3r44
+79R9*Unbounded_String<11|43R9> 474e14 26|40r14 50r14
+X 23 a-textio.ads
+49K13*Text_IO 471e16 27|1w10 2r9
+X 25 a-uncdea.ads
+17+9 Object 26|88r46 92r46 96r60
+18P9 Name(17+9) 26|88r62 92r63 97r60
+20u15*Unchecked_Deallocation 26|1w21 87r36 91r37 96r37
+X 26 helper.ads
+6K9*Helper 100l5 100e11 27|4b14 27l5 27t11
 11R9*FScreenInfo 15e14
 12i7*X{natural}
 12i9*Y{natural}
@@ -155,56 +165,60 @@ X 25 helper.ads
 23E9*EDirection 23e39 30r19
 23n24*D_LEFT{23E9}
 23n31*D_RIGHT{23E9}
-26R9*FCar 31e14 34r25 85r56
+26R9*FCar 31e14 34r25 88r56
 27i7*X{natural}
 27i9*Y{natural}
-28e7*CarColor{29|34E9}
+28e7*CarColor{30|34E9}
 29e7*Sign{character}
 30e7*Direction{23E9}
-34P9*PFCar(26R9) 63r53 85r70
-37R9*FNode 41e14 44r26 89r56
+34P9*PFCar(26R9) 63r53 88r70
+37R9*FNode 41e14 44r26 92r56
 38i7*X{natural}
 38i9*Y{natural}
-39e7*NodeColor{29|34E9}
-40r7*Data{20|79R9}
-44P9*PFNode(37R9) 68r54 89r71
-47R9*FText 51e14 54r26 93r70
+39e7*NodeColor{30|34E9}
+40r7*Data{21|79R9}
+44P9*PFNode(37R9) 68r54 92r71
+47R9*FText 51e14 54r26 96r70
 48i7*X{natural}
 48i9*Y{natural}
-49e7*TextColor{29|34E9}
-50r7*Text{20|79R9}
-54P9*PFText(47R9) 73r53 94r70
+49e7*TextColor{30|34E9}
+50r7*Text{21|79R9}
+54P9*PFText(47R9) 73r53 97r70
 59A9*TGate(boolean)<integer>
 62K12*TCarData[8|73] 64r8
 67K12*TNodeData[8|73] 69r8
 72K12*TTextData[8|73] 74r8
-80V13*RandInteger{natural} 80>25 80>27 26|6b13 14l8 14t19
-80i25 A{natural} 26|6b25 7r43
-80i27 B{natural} 26|6b27 7r46
-84U14*Delete_Car[24|20]
-88U14*Delete_Node[24|20]
-93U14*Delete_Text[24|20]
-X 26 helper.adb
+80V13*RandInteger{natural} 80>25 80>27 27|6b13 14l8 14t19
+80i25 A{natural} 27|6b25 7r43
+80i27 B{natural} 27|6b27 7r46
+83V13*RandDuration{duration} 83>26 83>28 27|17b13 23l8 23t20
+83f26 A{float} 27|17b26 22r37
+83f28 B{float} 27|17b28 22r33
+87U14*Delete_Car[25|20]
+91U14*Delete_Node[25|20]
+96U14*Delete_Text[25|20]
+X 27 helper.adb
 7I15 Rand_Range{natural} 8r60
 8K15 Rand_Int[15|44] 9r11
 10r7 G{15|50R9[8]} 12r13 13r22
-X 27 interfac.ads
+19r7 Z{17|47R9} 21r13 22r30
+X 28 interfac.ads
 74M9*Unsigned_32
 77M9*Unsigned_64
-X 29 nt_console.ads
-25K9*NT_Console 25|1w6 3r5 29|228e15
-34E9*Color_Type 25|28r18 39r19 49r19 29|37e36
-35n7*Black{34E9} 25|28r32
-37n30*White{34E9} 25|39r33 49r33
-X 30 system.ads
+X 30 nt_console.ads
+25K9*NT_Console 26|1w6 3r5 30|228e15
+34E9*Color_Type 26|28r18 39r19 49r19 30|37e36
+35n7*Black{34E9} 26|28r32
+37n30*White{34E9} 26|39r33 49r33
+X 31 system.ads
 67M9*Address
-X 39 s-memory.ads
-53V13*Alloc{30|67M9} 103i<c,__gnat_malloc>22
+X 40 s-memory.ads
+53V13*Alloc{31|67M9} 103i<c,__gnat_malloc>22
 68U14*Free 104i<c,__gnat_free>22
-76V13*Realloc{30|67M9} 105i<c,__gnat_realloc>22
-X 42 s-rannum.ads
-75V13*Random{27|74M9} 43|221i21
-76V13*Random{27|77M9} 43|221i21
-X 49 s-stalib.adb
+76V13*Realloc{31|67M9} 105i<c,__gnat_realloc>22
+X 43 s-rannum.ads
+75V13*Random{28|74M9} 44|221i21
+76V13*Random{28|77M9} 44|221i21
+X 50 s-stalib.adb
 93U14 Break_Start 94i<c,__gnat_break_start>22
 

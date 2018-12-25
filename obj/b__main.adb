@@ -40,14 +40,14 @@ package body ada_main is
    E006 : Short_Integer; pragma Import (Ada, E006, "ada__calendar__delays_E");
    E106 : Short_Integer; pragma Import (Ada, E106, "ada__real_time_E");
    E169 : Short_Integer; pragma Import (Ada, E169, "ada__text_io_E");
-   E189 : Short_Integer; pragma Import (Ada, E189, "system__pool_global_E");
-   E181 : Short_Integer; pragma Import (Ada, E181, "system__random_seed_E");
-   E205 : Short_Integer; pragma Import (Ada, E205, "system__tasking__initialization_E");
-   E193 : Short_Integer; pragma Import (Ada, E193, "system__tasking__protected_objects_E");
-   E209 : Short_Integer; pragma Import (Ada, E209, "system__tasking__protected_objects__entries_E");
-   E213 : Short_Integer; pragma Import (Ada, E213, "system__tasking__queuing_E");
-   E217 : Short_Integer; pragma Import (Ada, E217, "system__tasking__stages_E");
-   E187 : Short_Integer; pragma Import (Ada, E187, "nt_console_E");
+   E191 : Short_Integer; pragma Import (Ada, E191, "system__pool_global_E");
+   E183 : Short_Integer; pragma Import (Ada, E183, "system__random_seed_E");
+   E207 : Short_Integer; pragma Import (Ada, E207, "system__tasking__initialization_E");
+   E195 : Short_Integer; pragma Import (Ada, E195, "system__tasking__protected_objects_E");
+   E211 : Short_Integer; pragma Import (Ada, E211, "system__tasking__protected_objects__entries_E");
+   E215 : Short_Integer; pragma Import (Ada, E215, "system__tasking__queuing_E");
+   E219 : Short_Integer; pragma Import (Ada, E219, "system__tasking__stages_E");
+   E189 : Short_Integer; pragma Import (Ada, E189, "nt_console_E");
    E176 : Short_Integer; pragma Import (Ada, E176, "helper_E");
 
    Sec_Default_Sized_Stacks : array (1 .. 1) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
@@ -66,14 +66,14 @@ package body ada_main is
       begin
          F1;
       end;
-      E209 := E209 - 1;
+      E211 := E211 - 1;
       declare
          procedure F2;
          pragma Import (Ada, F2, "system__tasking__protected_objects__entries__finalize_spec");
       begin
          F2;
       end;
-      E189 := E189 - 1;
+      E191 := E191 - 1;
       declare
          procedure F3;
          pragma Import (Ada, F3, "system__pool_global__finalize_spec");
@@ -316,21 +316,21 @@ package body ada_main is
       Ada.Text_Io'Elab_Body;
       E169 := E169 + 1;
       System.Pool_Global'Elab_Spec;
-      E189 := E189 + 1;
+      E191 := E191 + 1;
       System.Random_Seed'Elab_Body;
-      E181 := E181 + 1;
+      E183 := E183 + 1;
       System.Tasking.Initialization'Elab_Body;
-      E205 := E205 + 1;
+      E207 := E207 + 1;
       System.Tasking.Protected_Objects'Elab_Body;
-      E193 := E193 + 1;
+      E195 := E195 + 1;
       System.Tasking.Protected_Objects.Entries'Elab_Spec;
-      E209 := E209 + 1;
+      E211 := E211 + 1;
       System.Tasking.Queuing'Elab_Body;
-      E213 := E213 + 1;
+      E215 := E215 + 1;
       System.Tasking.Stages'Elab_Body;
-      E217 := E217 + 1;
+      E219 := E219 + 1;
       Nt_Console'Elab_Body;
-      E187 := E187 + 1;
+      E189 := E189 + 1;
       Helper'Elab_Spec;
       E176 := E176 + 1;
    end adainit;

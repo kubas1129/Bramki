@@ -79,6 +79,9 @@ package Helper is
    -- Rand integer from range A-B
    function RandInteger(A,B:Natural) return Natural;
    
+   -- Rand duration
+   function RandDuration(A,B: Float) return Duration;
+   
    
    -- Deallocate Car object
    procedure Delete_Car is new Ada.Unchecked_Deallocation
