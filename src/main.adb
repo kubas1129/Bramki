@@ -16,7 +16,6 @@ procedure Main is
    -- Log variable
    Log : Unbounded_String;
 
-
    -- Predefine Gate task
    task type Gate is
       entry Start;
@@ -36,9 +35,11 @@ procedure Main is
       procedure InitNodesData;
       procedure InitTextsData;
       procedure UpdateTextsData;
+      procedure UpdateGatesData;
       procedure MoveCars;
       procedure GateMoveCar(X,Y : Natural);
       procedure SetGateState(GateIndex : Positive; Value : Boolean);
+      procedure SetCarGenerationSpeed(Value : in Positive);
 
 
       function CheckIfCarExisted(Index : in FMatrixIndex) return Boolean;
@@ -51,11 +52,13 @@ procedure Main is
       function GetTextsData return TTextData.Vector;
       function GetLastAddCar return PFCar;
       function GetLastAddNode return PFNode;
+      function GetCarGenerationSpeed return Positive;
    private
       CarsData : TCarData.Vector;
       NodesData : TNodeData.Vector;
       TextsData : TTextData.Vector;
       GatesState: TGate := (others => True);
+      CarGenerationSpeed : Positive := 1;
 
       LastAddCar : PFCar := null; -- temporary
       LastAddNode : PFNode := null; -- temporary
@@ -141,17 +144,40 @@ procedure Main is
                                      Text      => To_Unbounded_String("CAR SIMULATION")));
 
          -- INDEX=1
-         TextsData.Append(new FText'(X         => 8+SimulationScreenInfo.PaddingLeft,
+         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
                                      Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 4,
                                      TextColor => White,
                                      Text      => To_Unbounded_String("LOG: ") & Log));
+
+         -- INDEX=2
+         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
+                                     Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 6,
+                                     TextColor => White,
+                                     Text      => To_Unbounded_String("SimulationSpeed: ") & CarGenerationSpeed'Img));
+
       end InitTextsData;
 
       procedure UpdateTextsData is
       begin
          --Update log values
          TextsData.Element(1).Text := To_Unbounded_String("LOG: ") & Log;
+         TextsData.Element(2).Text := To_Unbounded_String("SimulationSpeed: ") & CarGenerationSpeed'Img;
       end UpdateTextsData;
+
+      procedure UpdateGatesData is
+      begin
+         for I of NodesData loop
+            if(I.X = 15) then
+               if(I.Y > 0 and I.Y < 4) or (I.Y = 6 or I.Y = 7 or I.Y = 8) then
+                  if(GetCarPointer((X=>15,Y=>I.Y)) = null) then
+                     I.NodeColor := Green;
+                  else
+                     I.NodeColor := Red;
+                  end if;
+               end if;
+            end if;
+         end loop;
+      end UpdateGatesData;
 
       procedure MoveCars is
       begin
@@ -217,6 +243,10 @@ procedure Main is
          return GatesState(GateIndex);
       end GetGateState;
 
+      procedure SetCarGenerationSpeed(Value : in Positive) is
+      begin
+         CarGenerationSpeed := Value;
+      end SetCarGenerationSpeed;
 
 
       -- GETTERS&SETTERS
@@ -245,6 +275,11 @@ procedure Main is
       begin
          return LastAddNode;
       end GetLastAddNode;
+
+      function GetCarGenerationSpeed return Positive is
+      begin
+         return CarGenerationSpeed;
+      end GetCarGenerationSpeed;
 
    end SimulationDataProtect;
 
@@ -320,13 +355,20 @@ procedure Main is
 
    task body Keyboard is
    begin
-      accept Start  do
-         loop
-            Set_Cursor(True);
-            delay ScreenRefreshInterval;
-            Set_Cursor(False);
-         end loop;
-      end Start;
+      accept Start;
+      loop
+         Set_Cursor(True);
+
+         --Key recognision
+         case Get_Key is
+         when '1' => SimulationDataProtect.SetCarGenerationSpeed(1);
+         when '2' => SimulationDataProtect.SetCarGenerationSpeed(2);
+         when '3' => SimulationDataProtect.SetCarGenerationSpeed(3);
+         when others => null;
+         end case;
+
+         Set_Cursor(False);
+      end loop;
    end Keyboard;
 
 
@@ -345,6 +387,7 @@ procedure Main is
          delay ScreenRefreshInterval;
          SimulationDataProtect.UpdateTextsData;
          SimulationDataProtect.MoveCars;
+         SimulationDataProtect.UpdateGatesData;
 
          --Gate handler
          for I of SimulationDataProtect.GetCarsData loop
@@ -371,6 +414,7 @@ procedure Main is
             end if;
 
          end loop;
+
       end loop;
    end Simulation;
 
@@ -391,7 +435,7 @@ procedure Main is
             SimulationDataProtect.AddCar(Index => (X=>1,Y=>CarPositionY),
                                          Value => 'X',Dir => D_RIGHT);
          end if;
-         delay 2.0;
+         delay 2.0/SimulationDataProtect.GetCarGenerationSpeed;
       end loop;
    end CarGenerator;
 
@@ -421,7 +465,7 @@ procedure Main is
             YY := CY;
          end HandleCar;
          --Wait delay in gate
-         delay 3.0;
+         delay RandDuration(1.0,3.0);
          -- Move Car out of gate
          SimulationDataProtect.GateMoveCar(X => XX,
                                            Y => YY);
@@ -454,8 +498,9 @@ begin
 
    Simulation.Start;
 
+   Keyboard.Start;
+
    Screen.Start;
 
-   Keyboard.Start;
 
 end Main;

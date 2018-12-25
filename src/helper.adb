@@ -1,4 +1,4 @@
-with Ada.Text_IO,Ada.Numerics.Discrete_Random;
+with Ada.Text_IO,Ada.Numerics.Discrete_Random,Ada.Numerics.Float_Random;
 use Ada.Text_IO;
 
 package body Helper is
@@ -12,6 +12,16 @@ package body Helper is
       Reset(G);
       return (Random(G));
    end RandInteger;
+
+
+   function RandDuration(A,B: Float) return Duration is
+      use Ada.Numerics.Float_Random;
+      Z : Generator;
+   begin
+      Reset(Z);
+      return Duration(Random(Z)*B + A);
+   end RandDuration;
+
 
 
 end Helper;
