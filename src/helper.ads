@@ -22,12 +22,17 @@ package Helper is
    -- Car move direction
    type EDirection is (D_LEFT,D_RIGHT);
    
+   -- Car type
+   type ECarType is (CT_Car,CT_Truck);
+   
    -- Cars (moving objects)
    type FCar is record
       X,Y : Natural := 0;
       CarColor : Color_Type := Black;
       Sign : Character;
       Direction : EDirection;
+      CarType : ECarType;
+      Money : Integer;
    end record;
    
    -- Pointer to FCar

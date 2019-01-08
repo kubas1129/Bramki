@@ -1,25 +1,25 @@
 [GENERATED OBJECT FILE]
 b__main.o
 [PROJECT FILES]
-F:\AGH\Projekty\Bramki\bramki.gpr
-20190108150758
+E:\AGH\Projekty\Bramki\bramki.gpr
+20181219214054
 [BOUND OBJECT FILES]
-F:\AGH\Projekty\Bramki\obj\nt_console.o
-F:\AGH\Projekty\Bramki\obj\helper.o
-F:\AGH\Projekty\Bramki\obj\main.o
+E:\AGH\Projekty\Bramki\obj\nt_console.o
+E:\AGH\Projekty\Bramki\obj\helper.o
+E:\AGH\Projekty\Bramki\obj\main.o
 [GENERATED SOURCE FILES]
 b__main.ads
 b__main.adb
 b__main.ali
 [RESULTING OPTIONS]
--LF:\AGH\Projekty\Bramki\obj\
--LF:\AGH\Projekty\Bramki\obj\
--LF:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
+-LE:\AGH\Projekty\Bramki\obj\
+-LE:\AGH\Projekty\Bramki\obj\
+-LE:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
 -static
 -static-libgcc
 -luser32
-F:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnarl.a
-F:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
+E:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnarl.a
+E:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
 -Xlinker
 --stack=0x200000,0x1000
 -mthreads

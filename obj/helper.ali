@@ -19,7 +19,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U helper%b		helper.adb		e7dd020f NE OO PK
+U helper%b		helper.adb		cb480a82 NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
 W ada.numerics.discrete_random%s
@@ -29,7 +29,7 @@ W ada.text_io%s		a-textio.adb		a-textio.ali
 W system%s		system.ads		system.ali
 Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
 
-U helper%s		helper.ads		f6011920 EE OO PF PK
+U helper%s		helper.ads		da9411ad EE OO PF PK
 W ada%s			ada.ads			ada.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
 Z ada.containers.generic_array_sort%s
@@ -80,11 +80,11 @@ D a-tags.ads		20180524051738 491b781d ada.tags%s
 D a-textio.ads		20180524051738 881db35a ada.text_io%s
 D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
 D a-uncdea.ads		20180524051736 eff36322 ada.unchecked_deallocation%s
-D helper.ads		20190108172350 b3cf7afa helper%s
-D helper.adb		20190108150758 edbc3d3a helper%b
+D helper.ads		20190108201712 9f5a7277 helper%s
+D helper.adb		20190108201642 edbc3d3a helper%b
 D interfac.ads		20180524051736 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
-D nt_console.ads	20190108150758 548ec638 nt_console%s
+D nt_console.ads	20190103181528 548ec638 nt_console%s
 D system.ads		20180524051738 32a08138 system%s
 D s-atocou.ads		20180524051738 b45c2d8d system.atomic_counters%s
 D s-atocou.adb		20180524051736 b65612c0 system.atomic_counters%b
@@ -115,45 +115,45 @@ D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
 D s-valuns.ads		20180524051738 10a8ed3b system.val_uns%s
 D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 26|1r17 1r44 1r67 3r17 3r32 87r32 91r33 96r33 27|1r6 1r18 1r47
-. 2r5 8r31 18r11
+16K9*Ada 20e8 26|1r17 1r44 1r67 3r17 3r32 92r32 96r33 101r33 27|1r6 1r18
+. 1r47 2r5 9r31 19r11
 X 4 a-contai.ads
 16K13*Containers 24e19 26|1r48 3r21
 X 8 a-convec.ads
-61I9 Index_Type 26|62r37 67r38 72r37
-62+9 Element_Type 26|63r37 68r38 73r37
-73k24*Vectors 824e27 26|1w59 62r28 67r29 72r29
+61I9 Index_Type 26|67r37 72r38 77r37
+62+9 Element_Type 26|68r37 73r38 78r37
+73k24*Vectors 824e27 26|1w59 67r28 72r29 77r29
 X 13 a-iteint.ads
 24h9 Forward_Iterator
 32h9 Reversible_Iterator<24R9[8|111]>
 X 14 a-numeri.ads
-16K13*Numerics 32e17 27|1r22 1r51 8r35 18r15
+16K13*Numerics 32e17 27|1r22 1r51 9r35 19r15
 X 15 a-nudira.ads
-44k22*Discrete_Random 75e33 27|1w31 8r44
-50R9 Generator<43|63R9> 27|10r11[8]
-52V13 Random{integer} 27|13s15[8]
-55U14 Reset<43|100p14> 27|12s7[8]
+44k22*Discrete_Random 75e33 27|1w31 9r44
+50R9 Generator<43|63R9> 27|11r11[9]
+52V13 Random{integer} 27|14s15[9]
+55U14 Reset<43|100p14> 27|13s7[9]
 X 16 a-nudira.adb
-53V16 Random[43|83]{integer} 44|392b13[27|8]
+53V16 Random[43|83]{integer} 44|392b13[27|9]
 X 17 a-nuflra.ads
-41K22*Float_Random 74e30 27|1w60 18r24
-47R9*Generator<43|63R9> 27|19r11
+41K22*Float_Random 74e30 27|1w60 19r24
+47R9*Generator<43|63R9> 27|20r11
 49F12*Uniformly_Distributed{float}
-51V13*Random{49F12}<43|71p13> 27|22s23
-53U14*Reset<43|100p14> 27|21s7
+51V13*Random{49F12}<43|71p13> 27|23s23
+53U14*Reset<43|100p14> 27|22s7
 X 19 a-string.ads
 16K13*Strings 35e16 26|1r71 3r36
 X 21 a-strunb.ads
 76K21*Unbounded 491e26 26|1w79 3r44
-79R9*Unbounded_String<11|43R9> 474e14 26|40r14 50r14
+79R9*Unbounded_String<11|43R9> 474e14 26|45r14 55r14
 X 23 a-textio.ads
 49K13*Text_IO 471e16 27|1w10 2r9
 X 25 a-uncdea.ads
-17+9 Object 26|88r46 92r46 96r60
-18P9 Name(17+9) 26|88r62 92r63 97r60
-20u15*Unchecked_Deallocation 26|1w21 87r36 91r37 96r37
+17+9 Object 26|93r46 97r46 101r60
+18P9 Name(17+9) 26|93r62 97r63 102r60
+20u15*Unchecked_Deallocation 26|1w21 92r36 96r37 101r37
 X 26 helper.ads
-6K9*Helper 100l5 100e11 27|4b14 27l5 27t11
+6K9*Helper 105l5 105e11 27|5b14 28l5 28t11
 11R9*FScreenInfo 15e14
 12i7*X{natural}
 12i9*Y{natural}
@@ -162,54 +162,59 @@ X 26 helper.ads
 18R9*FMatrixIndex 20e14
 19i7*X{natural}
 19i9*Y{natural}
-23E9*EDirection 23e39 30r19
+23E9*EDirection 23e39 33r19
 23n24*D_LEFT{23E9}
 23n31*D_RIGHT{23E9}
-26R9*FCar 31e14 34r25 88r56
-27i7*X{natural}
-27i9*Y{natural}
-28e7*CarColor{30|34E9}
-29e7*Sign{character}
-30e7*Direction{23E9}
-34P9*PFCar(26R9) 63r53 88r70
-37R9*FNode 41e14 44r26 92r56
-38i7*X{natural}
-38i9*Y{natural}
-39e7*NodeColor{30|34E9}
-40r7*Data{21|79R9}
-44P9*PFNode(37R9) 68r54 92r71
-47R9*FText 51e14 54r26 96r70
-48i7*X{natural}
-48i9*Y{natural}
-49e7*TextColor{30|34E9}
-50r7*Text{21|79R9}
-54P9*PFText(47R9) 73r53 97r70
-59A9*TGate(boolean)<integer>
-62K12*TCarData[8|73] 64r8
-67K12*TNodeData[8|73] 69r8
-72K12*TTextData[8|73] 74r8
-80V13*RandInteger{natural} 80>25 80>27 27|6b13 14l8 14t19
-80i25 A{natural} 27|6b25 7r43
-80i27 B{natural} 27|6b27 7r46
-83V13*RandDuration{duration} 83>26 83>28 27|17b13 23l8 23t20
-83f26 A{float} 27|17b26 22r37
-83f28 B{float} 27|17b28 22r33
-87U14*Delete_Car[25|20]
-91U14*Delete_Node[25|20]
-96U14*Delete_Text[25|20]
+26E9*ECarType 26e38 34r17
+26n22*CT_Car{26E9}
+26n29*CT_Truck{26E9}
+29R9*FCar 36e14 39r25 93r56
+30i7*X{natural}
+30i9*Y{natural}
+31e7*CarColor{30|34E9}
+32e7*Sign{character}
+33e7*Direction{23E9}
+34e7*CarType{26E9}
+35i7*Money{integer}
+39P9*PFCar(29R9) 68r53 93r70
+42R9*FNode 46e14 49r26 97r56
+43i7*X{natural}
+43i9*Y{natural}
+44e7*NodeColor{30|34E9}
+45r7*Data{21|79R9}
+49P9*PFNode(42R9) 73r54 97r71
+52R9*FText 56e14 59r26 101r70
+53i7*X{natural}
+53i9*Y{natural}
+54e7*TextColor{30|34E9}
+55r7*Text{21|79R9}
+59P9*PFText(52R9) 78r53 102r70
+64A9*TGate(boolean)<integer>
+67K12*TCarData[8|73] 69r8
+72K12*TNodeData[8|73] 74r8
+77K12*TTextData[8|73] 79r8
+85V13*RandInteger{natural} 85>25 85>27 27|7b13 15l8 15t19
+85i25 A{natural} 27|7b25 8r43
+85i27 B{natural} 27|7b27 8r46
+88V13*RandDuration{duration} 88>26 88>28 27|18b13 24l8 24t20
+88f26 A{float} 27|18b26 23r37
+88f28 B{float} 27|18b28 23r33
+92U14*Delete_Car[25|20]
+96U14*Delete_Node[25|20]
+101U14*Delete_Text[25|20]
 X 27 helper.adb
-7I15 Rand_Range{natural} 8r60
-8K15 Rand_Int[15|44] 9r11
-10r7 G{15|50R9[8]} 12r13 13r22
-19r7 Z{17|47R9} 21r13 22r30
+8I15 Rand_Range{natural} 9r60
+9K15 Rand_Int[15|44] 10r11
+11r7 G{15|50R9[9]} 13r13 14r22
+20r7 Z{17|47R9} 22r13 23r30
 X 28 interfac.ads
 74M9*Unsigned_32
 77M9*Unsigned_64
 X 30 nt_console.ads
 25K9*NT_Console 26|1w6 3r5 30|228e15
-34E9*Color_Type 26|28r18 39r19 49r19 30|37e36
-35n7*Black{34E9} 26|28r32
-37n30*White{34E9} 26|39r33 49r33
+34E9*Color_Type 26|31r18 44r19 54r19 30|37e36
+35n7*Black{34E9} 26|31r32
+37n30*White{34E9} 26|44r33 54r33
 X 31 system.ads
 67M9*Address
 X 40 s-memory.ads
