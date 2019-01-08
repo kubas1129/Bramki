@@ -3,6 +3,18 @@ with Ada.Text_IO, NT_Console, Helper,Ada.Strings.Unbounded,Ada.Strings.Fixed;
 use Ada.Text_IO, NT_Console,Helper,Ada.Strings.Unbounded,Ada.Strings.Fixed;
 
 
+---- TODO: ----
+-- zmienic nazwe na z carsimulation
+-- dodac ilosc hajsu zarobionego na autach
+-- dodac dwa typy samochodow
+
+-- instrukcja do symulacji
+-- zakonczenie symulacji - przycisk
+-- obiekty cykliczne
+-- usun "do" z accept Start jednego
+-- dodac czas symualcji
+
+
 procedure Main is
 
 
@@ -153,7 +165,7 @@ procedure Main is
          TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
                                      Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 6,
                                      TextColor => White,
-                                     Text      => To_Unbounded_String("SimulationSpeed: ") & CarGenerationSpeed'Img));
+                                     Text      => To_Unbounded_String("TrafficIntensity: ") & CarGenerationSpeed'Img));
 
       end InitTextsData;
 
@@ -345,7 +357,7 @@ procedure Main is
    begin
       accept Start  do
          loop
-            Clear_Screen(Blue);
+            Clear_Screen(Black);
             RefreshScreen;
             delay ScreenRefreshInterval;
          end loop;
