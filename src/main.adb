@@ -2,17 +2,12 @@ with Ada.Text_IO, NT_Console, Helper,Ada.Strings.Unbounded,Ada.Strings.Fixed;
 
 use Ada.Text_IO, NT_Console,Helper,Ada.Strings.Unbounded,Ada.Strings.Fixed;
 
+with GNAT.OS_Lib;
 
----- TODO: ----
--- zmienic nazwe na z carsimulation
--- dodac ilosc hajsu zarobionego na autach
--- dodac dwa typy samochodow
 
--- instrukcja do symulacji
--- zakonczenie symulacji - przycisk
+
+
 -- obiekty cykliczne
--- usun "do" z accept Start jednego
--- dodac czas symualcji
 
 
 procedure Main is
@@ -42,7 +37,7 @@ procedure Main is
    -- PROTECTED
 
    protected SimulationDataProtect is
-      procedure AddCar(Index: in FMatrixIndex; Value : in Character; Dir : in EDirection);
+      procedure AddCar(Index: in FMatrixIndex; CarSign : in Character; Dir : in EDirection; CarT: in ECarType; MoneyValue : in Integer; CarColorVal : in Color_Type);
       procedure RemoveCar(CarPointer: in PFCar);
       procedure InitNodesData;
       procedure InitTextsData;
@@ -52,6 +47,7 @@ procedure Main is
       procedure GateMoveCar(X,Y : Natural);
       procedure SetGateState(GateIndex : Positive; Value : Boolean);
       procedure SetCarGenerationSpeed(Value : in Positive);
+      procedure AddCollectedMoney(Value : in Integer);
 
 
       function CheckIfCarExisted(Index : in FMatrixIndex) return Boolean;
@@ -71,6 +67,7 @@ procedure Main is
       TextsData : TTextData.Vector;
       GatesState: TGate := (others => True);
       CarGenerationSpeed : Positive := 1;
+      CollectedMoney: Integer :=0;
 
       LastAddCar : PFCar := null; -- temporary
       LastAddNode : PFNode := null; -- temporary
@@ -78,15 +75,17 @@ procedure Main is
 
 
    protected body SimulationDataProtect is
-      procedure AddCar(Index: in FMatrixIndex; Value : in Character; Dir : in EDirection) is
+      procedure AddCar(Index: in FMatrixIndex; CarSign : in Character; Dir : in EDirection; CarT: in ECarType; MoneyValue : in Integer; CarColorVal : in Color_Type) is
       begin
          -- Check if car on index position not exist already
          if(CheckIfCarExisted(Index => Index) = False) then
             CarsData.Append(New_Item => new FCar'(X         => Index.X,
                                                   Y         => Index.Y,
-                                                  CarColor  => White,
-                                                  Sign      => 'X',
-                                                  Direction => Dir));
+                                                  CarColor  => CarColorVal,
+                                                  Sign      => CarSign,
+                                                  Direction => Dir,
+                                                  CarType => CarT,
+                                                  Money => MoneyValue));
             LastAddCar := CarsData.Last_Element;
          else
             LastAddCar := null;
@@ -150,30 +149,56 @@ procedure Main is
       procedure InitTextsData is
       begin
          -- INDEX=0
-         TextsData.Append(new FText'(X         => 8+SimulationScreenInfo.PaddingLeft,
+         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
                                      Y         => 4,
                                      TextColor => White,
-                                     Text      => To_Unbounded_String("CAR SIMULATION")));
+                                     Text      => To_Unbounded_String("HIGHWAY GATES SIMULATION")));
 
          -- INDEX=1
-         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
-                                     Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 4,
-                                     TextColor => White,
-                                     Text      => To_Unbounded_String("LOG: ") & Log));
+         TextsData.Append(new FText'(X         => 6+SimulationScreenInfo.PaddingLeft,
+                                     Y         => 6,
+                                     TextColor => Light_Blue,
+                                     Text      => To_Unbounded_String("Collected money:") & CollectedMoney'Img & To_Unbounded_String(" zl")));
 
          -- INDEX=2
          TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
+                                     Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 2,
+                                     TextColor => White,
+                                     Text      => To_Unbounded_String("Legend:")));
+
+         -- INDEX=3
+         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
+                                     Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 3,
+                                     TextColor => Light_Green,
+                                     Text      => To_Unbounded_String("Green Car - personal car (10 zl)")));
+
+         -- INDEX=4
+         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
+                                     Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 4,
+                                     TextColor => Light_Cyan,
+                                     Text      => To_Unbounded_String("Cyan Car - truck (20 zl)")));
+
+         -- INDEX=5
+         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
                                      Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 6,
                                      TextColor => White,
+                                     Text      => To_Unbounded_String("Click Q to quit or 1/2/3 to adjust intensity") & CarGenerationSpeed'Img));
+
+
+         -- INDEX=6
+         TextsData.Append(new FText'(X         => 4+SimulationScreenInfo.PaddingLeft,
+                                     Y         => SimulationScreenInfo.PaddingTop+SimulationScreenInfo.Y + 7,
+                                     TextColor => White,
                                      Text      => To_Unbounded_String("TrafficIntensity: ") & CarGenerationSpeed'Img));
+
 
       end InitTextsData;
 
       procedure UpdateTextsData is
       begin
          --Update log values
-         TextsData.Element(1).Text := To_Unbounded_String("LOG: ") & Log;
-         TextsData.Element(2).Text := To_Unbounded_String("SimulationSpeed: ") & CarGenerationSpeed'Img;
+         TextsData.Element(1).Text := To_Unbounded_String("Collected money:") & CollectedMoney'Img & To_Unbounded_String(" zl");
+         TextsData.Element(6).Text := To_Unbounded_String("TrafficIntensity: ") & CarGenerationSpeed'Img;
       end UpdateTextsData;
 
       procedure UpdateGatesData is
@@ -259,6 +284,11 @@ procedure Main is
       begin
          CarGenerationSpeed := Value;
       end SetCarGenerationSpeed;
+
+      procedure AddCollectedMoney(Value : in Integer) is
+      begin
+         CollectedMoney := CollectedMoney + Value;
+      end AddCollectedMoney;
 
 
       -- GETTERS&SETTERS
@@ -355,13 +385,12 @@ procedure Main is
 
    task body Screen is
    begin
-      accept Start  do
-         loop
-            Clear_Screen(Black);
-            RefreshScreen;
-            delay ScreenRefreshInterval;
-         end loop;
-      end Start;
+      accept Start;
+      loop
+         Clear_Screen(Black);
+         RefreshScreen;
+         delay ScreenRefreshInterval;
+      end loop;
    end Screen;
 
 
@@ -376,6 +405,16 @@ procedure Main is
          when '1' => SimulationDataProtect.SetCarGenerationSpeed(1);
          when '2' => SimulationDataProtect.SetCarGenerationSpeed(2);
          when '3' => SimulationDataProtect.SetCarGenerationSpeed(3);
+         when 'q' =>
+            abort Screen;
+            abort Simulation;
+            abort CarHandler;
+            abort CarGenerator;
+            NT_Console.Clear_Screen(Black);
+            NT_Console.Goto_XY(0,0);
+            NT_Console.Set_Foreground(White);
+            Put("Simulation terminated, close manually by ALT+F4...");
+            GNAT.OS_Lib.OS_Exit(0);
          when others => null;
          end case;
 
@@ -433,19 +472,34 @@ procedure Main is
 
    task body CarGenerator is
       CarPositionY : Integer := 0;
+      CarTypeRand : ECarType := CT_Car;
+      MoneyV : Integer := 10;
+      CarCol : Color_Type;
    begin
       accept Start;
       loop
+         --Rand car type
+         if(RandInteger(0,3) /= 1) then
+            CarTypeRand := CT_Car;
+            MoneyV := 10;
+            CarCol := Light_Green;
+         else
+            CarTypeRand := CT_Truck;
+            MoneyV := 20;
+            CarCol := Light_Cyan;
+         end if;
+
+
          if(RandInteger(0,1) = 0) then
             -- Generate Left move
             CarPositionY := RandInteger(1,3);
             SimulationDataProtect.AddCar(Index => (X=>29,Y=>CarPositionY),
-                                         Value => 'X',Dir => D_LEFT);
+                                         CarSign => '<',Dir => D_LEFT,CarT => CarTypeRand,MoneyValue => MoneyV,CarColorVal => CarCol);
          else
             -- Generate Right move
             CarPositionY := RandInteger(6,8);
             SimulationDataProtect.AddCar(Index => (X=>1,Y=>CarPositionY),
-                                         Value => 'X',Dir => D_RIGHT);
+                                         CarSign => '>',Dir => D_RIGHT,CarT => CarTypeRand,MoneyValue => MoneyV,CarColorVal => CarCol);
          end if;
          delay 2.0/SimulationDataProtect.GetCarGenerationSpeed;
       end loop;
@@ -469,6 +523,8 @@ procedure Main is
 
    task body Gate is
       XX,YY : Natural;
+      GateWait : Duration;
+      MoneyVal : Integer;
    begin
       accept Start;
       loop
@@ -476,11 +532,22 @@ procedure Main is
             XX := CX;
             YY := CY;
          end HandleCar;
+
          --Wait delay in gate
-         delay RandDuration(1.0,3.0);
+         if (SimulationDataProtect.GetCarPointer((X=>XX,Y=>YY)).CarType = CT_Car) then
+            GateWait := 0.0;
+         else
+            GateWait := 2.0;
+         end if;
+         --Money set
+         MoneyVal := SimulationDataProtect.GetCarPointer((X=>XX,Y=>YY)).Money;
+        -- delay
+         delay RandDuration(1.0,3.0)+GateWait;
          -- Move Car out of gate
          SimulationDataProtect.GateMoveCar(X => XX,
                                            Y => YY);
+
+
          --Set gate state to True
          if(YY = 1) then
             SimulationDataProtect.SetGateState(1,True);
@@ -495,6 +562,9 @@ procedure Main is
          elsif(YY = 8) then
             SimulationDataProtect.SetGateState(6,True);
          end if;
+
+         -- add money for car/truck
+         SimulationDataProtect.AddCollectedMoney(Value => MoneyVal);
 
       end loop;
    end Gate;
@@ -513,6 +583,7 @@ begin
    Keyboard.Start;
 
    Screen.Start;
+
 
 
 end Main;

@@ -18,13 +18,13 @@ RV NO_ELABORATION_CODE
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U ada_main%b		b__main.adb		4871370b OO PK IL
+U ada_main%b		b__main.adb		6603701a OO PK IL
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W system%s		system.ads		system.ali
 W system.restrictions%s	s-restri.adb		s-restri.ali
 
-U ada_main%s		b__main.ads		986ada70 EE NE OO PK IL
+U ada_main%s		b__main.ads		f0e4094a EE NE OO PK IL
 W system%s		system.ads		system.ali
 W system.parameters%s	s-parame.adb		s-parame.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
@@ -32,8 +32,8 @@ W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 D ada.ads		20180524051736 76789da1 ada%s
 D a-except.ads		20180524051736 291912d5 ada.exceptions%s
 D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
-D b__main.ads		20190108172358 c29de955 ada_main%s
-D b__main.adb		20190108172358 b868caf9 ada_main%b
+D b__main.ads		20190108201728 aa133a6f ada_main%s
+D b__main.adb		20190108201728 fe945ed2 ada_main%b
 D system.ads		20180524051738 32a08138 system%s
 D s-parame.ads		20180524051738 48ec542b system.parameters%s
 D s-restri.ads		20180524051736 1b9d0672 system.restrictions%s
@@ -47,7 +47,7 @@ X 1 ada.ads
 X 2 a-except.ads
 54K13*Exceptions 349e19 5|8w10
 X 4 b__main.ads
-6K9*ada_main 701l5 701e13 5|10b14 387l5 387t13
+6K9*ada_main 707l5 707e13 5|10b14 387l5 387t13
 8i4*gnat_argc{integer} 12m22 12r22 5|358m7
 9m4*gnat_argv{6|67M9} 13m22 13r22 5|359m7
 10m4*gnat_envp{6|67M9} 14m22 14r22 5|360m7
@@ -79,7 +79,7 @@ X 4 b__main.ads
 . 394r22 396r22 398r22 400r22 402r22 404r22 406r22 408r22 410r22 412r22 414r22
 . 416r22 418r22 420r22 422r22 424r22 426r22 428r22 430r22 432r22 434r22 436r22
 . 438r22 440r22 442r22 444r22 446r22 448r22 450r22 452r22 454r22 456r22 458r22
-. 460r22 462r22 464r22 466r22 468r22 470r22 472r22 474r22 476r22
+. 460r22 462r22 464r22 466r22 468r22 470r22 472r22 474r22 476r22 478r22 480r22
 40m4*u00001{39M9} 41r22
 42m4*u00002{39M9} 43r22
 44m4*u00003{39M9} 45r22
@@ -299,6 +299,8 @@ X 4 b__main.ads
 472m4*u00217{39M9} 473r22
 474m4*u00218{39M9} 475r22
 476m4*u00219{39M9} 477r22
+478m4*u00220{39M9} 479r22
+480m4*u00221{39M9} 481r22
 X 5 b__main.adb
 12i4 E074{short_integer} 12m46 12r46 264m7 264r15
 13i4 E015{short_integer} 13m46 13r46 270m7 270r15
@@ -314,7 +316,7 @@ X 5 b__main.adb
 23i4 E082{short_integer} 23m46 23r46 278m7 278r15
 24i4 E049{short_integer} 24m46 24r46 273m7 273r15
 25i4 E041{short_integer} 25m46 25r46 277m7 277r15
-26i4 E177{short_integer} 26m46 26r46 280m7 280r15
+26i4 E179{short_integer} 26m46 26r46 280m7 280r15
 27i4 E140{short_integer} 27m46 27r46 283m7 283r15
 28i4 E157{short_integer} 28m46 28r46 285m7 285r15
 29i4 E112{short_integer} 29m46 29r46 287m7 287r15
@@ -331,15 +333,15 @@ X 5 b__main.adb
 40i4 E006{short_integer} 40m46 40r46 311m7 311r15
 41i4 E106{short_integer} 41m46 41r46 314m7 314r15
 42i4 E169{short_integer} 42m46 42r46 83m7 83r15 317m7 317r15
-43i4 E191{short_integer} 43m46 43r46 76m7 76r15 319m7 319r15
-44i4 E183{short_integer} 44m46 44r46 321m7 321r15
-45i4 E207{short_integer} 45m46 45r46 323m7 323r15
-46i4 E195{short_integer} 46m46 46r46 325m7 325r15
-47i4 E211{short_integer} 47m46 47r46 69m7 69r15 327m7 327r15
-48i4 E215{short_integer} 48m46 48r46 329m7 329r15
-49i4 E219{short_integer} 49m46 49r46 331m7 331r15
-50i4 E189{short_integer} 50m46 50r46 333m7 333r15
-51i4 E176{short_integer} 51m46 51r46 62m7 62r15 335m7 335r15
+43i4 E193{short_integer} 43m46 43r46 76m7 76r15 319m7 319r15
+44i4 E185{short_integer} 44m46 44r46 321m7 321r15
+45i4 E209{short_integer} 45m46 45r46 323m7 323r15
+46i4 E197{short_integer} 46m46 46r46 325m7 325r15
+47i4 E213{short_integer} 47m46 47r46 69m7 69r15 327m7 327r15
+48i4 E217{short_integer} 48m46 48r46 329m7 329r15
+49i4 E221{short_integer} 49m46 49r46 331m7 331r15
+50i4 E191{short_integer} 50m46 50r46 333m7 333r15
+51i4 E178{short_integer} 51m46 51r46 62m7 62r15 335m7 335r15
 53a4 Sec_Default_Sized_Stacks(10|45R9) 245m32 245r32
 55a4 Local_Priority_Specific_Dispatching{string} 232r9
 56a4 Local_Interrupt_States{string} 235r27

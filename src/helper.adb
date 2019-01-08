@@ -1,6 +1,7 @@
 with Ada.Text_IO,Ada.Numerics.Discrete_Random,Ada.Numerics.Float_Random;
 use Ada.Text_IO;
 
+
 package body Helper is
 
    function RandInteger(A,B:Natural) return Natural is
